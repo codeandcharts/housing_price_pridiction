@@ -1,11 +1,12 @@
 import sys
+import logger
 
 
 def error_handler(error, error_detail: sys):
     _, _, exc_tb = error_detail.exc_info()
     file_name = exc_tb.tb_frame.f_code.co_filename
     line_number = exc_tb.tb_lineno
-    error_message = f"Error occurred in python script: [{0}] at line number: [{1}] error message: [{2}]".format(
+    error_message = "Error occurred in python script: [{0}] at line number: [{1}] error message: [{2}]".format(
         file_name, line_number, str(error)
     )
     return error_message
