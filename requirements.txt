@@ -8,5 +8,6 @@ scipy
 scikit-learn
 xgboost
 lightgbm
+missingno
 
 -e .
