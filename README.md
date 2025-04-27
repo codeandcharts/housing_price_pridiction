@@ -6,9 +6,7 @@
 
 This project implements a machine learning system to predict house prices based on various property features. It follows a modular code structure and includes a user-friendly [Streamlit web interface](https://pridicthouseprice.streamlit.app/)  that allows users to input property details and receive price predictions. The data used in this project is from a Kaggle competition house-prices-advanced-regression-techniques.
 
-[Check the app here](https://pridicthouseprice.streamlit.app/) 
-
-Key features include:
+**Key features include:**
 - Data preprocessing with feature engineering
 - Model comparison and selection
 - Exploratory data analysis and visualizations
