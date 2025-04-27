@@ -2,11 +2,11 @@
 
 ![House Price Prediction Banner](assets/images/abby-rurenko-uOYak90r4L0-unsplash.jpg)
 
-## 📋 Project Overview
+## Project Overview
 
-This project implements a machine learning system to predict house prices based on various property features. It follows a modular code structure and includes a user-friendly Streamlit web interface that allows users to input property details and receive price predictions in real-time.
+This project implements a machine learning system to predict house prices based on various property features. It follows a modular code structure and includes a user-friendly [Streamlit web interface](https://pridicthouseprice.streamlit.app/)  that allows users to input property details and receive price predictions. The data used in this project is from a Kaggle competition house-prices-advanced-regression-techniques.
 
-Key features include:
+**Key features include:**
 - Data preprocessing with feature engineering
 - Model comparison and selection
 - Exploratory data analysis and visualizations
@@ -14,7 +14,7 @@ Key features include:
 - Feature importance visualization
 - Modular and reusable codebase
 
-## 📊 Data Science Pipeline
+## Data Science Pipeline
 
 The project implements a complete data science pipeline:
 1. **Data Ingestion**: Loading and splitting data
@@ -24,7 +24,7 @@ The project implements a complete data science pipeline:
 5. **Feature Importance Analysis**: Identifying the most influential features
 6. **Prediction Interface**: User-friendly web application
 
-## 🧠 Models Implemented
+## Models Implemented
 
 The pipeline compares multiple regression models:
 - Linear Regression
@@ -38,7 +38,7 @@ The pipeline compares multiple regression models:
 - AdaBoost
 - K-Nearest Neighbors
 
-## 🖥️ Screenshots
+## Screenshots
 
 ### Web Application UI
 ![Web App Screenshot](assets/screen_shots/pic_01.png)
@@ -50,7 +50,7 @@ The pipeline compares multiple regression models:
 ### Price Prediction
 ![Price Prediction](assets/screen_shots/pic_03.png)
 
-## 🚀 Project Structure
+## Project Structure
 
 ```
 housing_price_prediction/
@@ -79,7 +79,7 @@ housing_price_prediction/
 └── README.md              # Project documentation
 ```
 
-## 🛠️ Installation and Setup
+## Installation and Setup
 
 ### Prerequisites
 - Python 3.7+
@@ -122,7 +122,7 @@ conda activate house_price_env
 pip install -r requirements.txt
 ```
 
-## 🏃‍♂️ Running the Project
+## Running the Project
 
 ### Training the Model
 
@@ -140,7 +140,7 @@ streamlit run app.py
 
 The app will be available at http://localhost:8501 in your web browser.
 
-## 🔍 Technical Implementation
+## Technical Implementation
 
 ### Feature Engineering
 
@@ -164,41 +164,19 @@ Feature importance analysis reveals that these factors most strongly influence h
 5. Full Bathrooms
 6. Year Built
 
-## 🖋️ Portfolio Presentation
-
-### Project Goals
-
-This project was developed to demonstrate:
-
-1. **Machine Learning Expertise**: Implementation of a complete regression pipeline
-2. **Software Engineering Best Practices**: Modular code, exception handling, logging
-3. **Data Analysis Skills**: Feature importance analysis and data visualization
-4. **Web Application Development**: Creating an intuitive user interface
-
-### Key Challenges and Solutions
-
-**Challenge 1: Feature Selection**
-- Utilized feature importance analysis to identify the most impactful features
-- Implemented visualizations to understand feature relationships
-- Created a streamlined UI that focuses on the most important inputs
-
-**Challenge 2: User Experience**
-- Developed a clean, intuitive interface with dark/light mode
-- Added helpful tooltips and explanations for features
-- Created visual feedback with charts to explain predictions
-
-**Challenge 3: Model Performance**
-- Compared multiple algorithms to find the best performer
-- Implemented proper preprocessing to handle different feature types
-- Used grid search to optimize hyperparameters
-
 ### Future Improvements
 
-1. Add advanced visualizations for model performance analysis
-2. Implement additional feature engineering techniques
-3. Create presets for different housing types
-4. Add geographical visualization for neighborhood comparisons
-5. Implement model explainability for individual predictions
+1. Use real-data from Zillow or realtor
+2. Add location, city and country information
+3. Add real-time data
+4. Add advanced visualizations for model performance analysis
+5. Implement additional feature engineering techniques
+6. Create presets for different housing types
+7. Add geographical visualization for neighborhood comparisons
+8. Implement model explainability for individual predictions
+
+
+[App](https://pridicthouseprice.streamlit.app/) 
 
 ## 📄 License
 
