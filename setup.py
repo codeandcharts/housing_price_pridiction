@@ -1,3 +1,11 @@
+import warnings
+
+# Silence the Loky cores warning
+warnings.filterwarnings("ignore", message="Could not find the number of physical cores")
+
+# Silence the LightGBM feature-name warning
+warnings.filterwarnings("ignore", message=".*valid feature names.*")
+
 from setuptools import setup, find_packages, setup
 from typing import List
 

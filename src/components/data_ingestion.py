@@ -12,6 +12,8 @@ from src.logger import logging
 # import downstream components
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
+from sklearn.metrics import mean_squared_error
+from src.components.visualize_results import plot_feature_importances, plot_shap_summary
 
 
 @dataclass

@@ -18,8 +18,7 @@ import lightgbm as lgb
 from src.exception import CustomException
 from src.logger import logging
 
-from src.utils import save_object, evaluate_models
-
+from src.utils import save_object, evaluate_models, load_object
 import warnings
 
 warnings.filterwarnings("ignore", message=".*valid feature names.*")
@@ -94,13 +93,13 @@ class ModelTrainer:
             logging.info(f"Best model: {best_model_name} (R² = {best_model_score:.3f})")
 
             # 5) Save the preprocessor and the model
-            #    (assuming save_object handles both .pkl paths appropriately)
-            save_object(file_path=preprocessor_path, obj="YOUR_PREPROCESSOR_OBJECT")
+            # FIX: Get the actual preprocessor from the file instead of a string
+            preprocessor = load_object(preprocessor_path)
+            save_object(file_path=preprocessor_path, obj=preprocessor)
             save_object(file_path=self.config.trained_model_path, obj=best_model)
             logging.info(
                 f"Saved preprocessor to {preprocessor_path} and model to {self.config.trained_model_path}"
             )
-
             # 6) Final R² on test set
             preds = best_model.predict(X_test)
             r2 = r2_score(y_test, preds)
