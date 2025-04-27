@@ -200,6 +200,9 @@ This project was developed to demonstrate:
 4. Add geographical visualization for neighborhood comparisons
 5. Implement model explainability for individual predictions
 
+
+[Try the app here](https://pridicthouseprice.streamlit.app/) 
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
