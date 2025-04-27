@@ -26,8 +26,10 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         try:
+            # ----------------------------
+            # 1) List your features, minus "Id"
+            # ----------------------------
             numerical_features = [
-                "Id",
                 "MSSubClass",
                 "LotFrontage",
                 "LotArea",
@@ -66,27 +68,35 @@ class DataTransformation:
                 "YrSold",
             ]
 
+            # ----------------------------
+            # 2) Ordinal-encode these, including BsmtFinType2
+            # ----------------------------
             ode_cols = [
                 "LotShape",
                 "LandContour",
                 "Utilities",
                 "LandSlope",
                 "BsmtQual",
+                "BsmtExposure",
                 "BsmtFinType1",
+                "BsmtFinType2",
+                "BsmtCond",
                 "CentralAir",
-                "Functional",
+                "Electrical",
+                "ExterQual",
+                "ExterCond",
                 "FireplaceQu",
+                "Functional",
                 "GarageFinish",
                 "GarageQual",
-                "PavedDrive",
-                "ExterCond",
-                "KitchenQual",
-                "BsmtExposure",
                 "HeatingQC",
-                "ExterQual",
-                "BsmtCond",
+                "KitchenQual",
+                "PavedDrive",
             ]
 
+            # ----------------------------
+            # 3) One‐hot encode the rest you want
+            # ----------------------------
             ohe_cols = [
                 "Street",
                 "LotConfig",
@@ -96,19 +106,20 @@ class DataTransformation:
                 "BldgType",
                 "HouseStyle",
                 "RoofStyle",
+                "RoofMatl",
                 "Exterior1st",
                 "Exterior2nd",
                 "MasVnrType",
                 "Foundation",
-                "Electrical",
                 "SaleType",
-                "MSZoning",
                 "SaleCondition",
                 "Heating",
                 "GarageType",
-                "RoofMatl",
             ]
 
+            # ----------------------------
+            # 4) Build pipelines
+            # ----------------------------
             num_pipeline = Pipeline(
                 [
                     ("imputer", SimpleImputer(strategy="mean")),
@@ -130,7 +141,7 @@ class DataTransformation:
                 [
                     ("imputer", SimpleImputer(strategy="most_frequent")),
                     (
-                        "onehot_encoder",
+                        "onehot",
                         OneHotEncoder(handle_unknown="ignore", sparse_output=False),
                     ),
                 ]
@@ -138,15 +149,15 @@ class DataTransformation:
 
             col_trans = ColumnTransformer(
                 [
-                    ("num_pipeline", num_pipeline, numerical_features),
-                    ("ode_pipeline", ode_pipeline, ode_cols),
-                    ("ohe_pipeline", ohe_pipeline, ohe_cols),
+                    ("num", num_pipeline, numerical_features),
+                    ("ord", ode_pipeline, ode_cols),
+                    ("ohe", ohe_pipeline, ohe_cols),
                 ],
-                remainder="passthrough",
+                remainder="drop",  # <--- drop anything not listed
                 n_jobs=-1,
             )
 
-            return Pipeline([("preprocessing", col_trans)])
+            return Pipeline([("preprocessor", col_trans)])
 
         except Exception as e:
             raise CustomException(e, sys)
@@ -154,22 +165,16 @@ class DataTransformation:
     def initiate_data_transformation(
         self, train_df: pd.DataFrame, test_df: pd.DataFrame
     ):
-        """
-        Takes train/test DataFrames, fits the preprocessor on train,
-        transforms both, and returns numpy arrays + preprocessor path.
-        """
         try:
             logging.info("Starting data transformation.")
-
             preprocessor = self.get_data_transformer_object()
             target_col = "SalePrice"
 
-            # split out X/y
-            X_train = train_df.drop(columns=[target_col], axis=1)
+            # split features / target
+            X_train = train_df.drop(columns=[target_col, "Id"], errors="ignore")
             y_train = train_df[target_col].values
 
-            # drop target if present, ignore if not
-            X_test = test_df.drop(columns=[target_col], axis=1, errors="ignore")
+            X_test = test_df.drop(columns=[target_col, "Id"], errors="ignore")
             y_test = (
                 test_df[target_col].values if target_col in test_df.columns else None
             )
@@ -178,11 +183,11 @@ class DataTransformation:
             X_train_arr = preprocessor.fit_transform(X_train)
             X_test_arr = preprocessor.transform(X_test)
 
-            # reassemble arrays
+            # reassemble into numpy arrays
             train_arr = np.c_[X_train_arr, y_train]
             test_arr = np.c_[X_test_arr, y_test] if y_test is not None else X_test_arr
 
-            # save preprocessor object
+            # save the fitted transformer
             save_object(
                 file_path=self.config.preprocessor_obj_file_path, obj=preprocessor
             )
