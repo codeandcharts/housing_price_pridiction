@@ -1,6 +1,6 @@
 # House Price Prediction Project
 
-![House Price Prediction Banner](assets/images/banner.png)
+![House Price Prediction Banner](assets/images/abby-rurenko-uOYak90r4L0-unsplash.jpg)
 
 ## 📋 Project Overview
 
@@ -41,13 +41,14 @@ The pipeline compares multiple regression models:
 ## 🖥️ Screenshots
 
 ### Web Application UI
-![Web App Screenshot](assets/images/app_screenshot.png)
+![Web App Screenshot](assets/screen_shots/pic_01.png)
+![Web App Screenshot](assets/screen_shots/pic_02.png)
 
 ### Feature Importance
-![Feature Importance](assets/images/feature_importance.png)
+![Feature Importance](artifacts/plots/feature_importance.png)
 
 ### Price Prediction
-![Price Prediction](assets/images/prediction.png)
+![Price Prediction](assets/screen_shots/pic_03.png)
 
 ## 🚀 Project Structure
 
@@ -108,7 +109,7 @@ pip install -r requirements.txt
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/housing_price_prediction.git
+git clone https://github.com/codeandcharts/housing_price_prediction.git
 cd housing_price_prediction
 
 # Create a conda environment
@@ -190,10 +191,6 @@ This project was developed to demonstrate:
 - Compared multiple algorithms to find the best performer
 - Implemented proper preprocessing to handle different feature types
 - Used grid search to optimize hyperparameters
-
-### Demo Video
-
-[![Project Demo](assets/images/demo_thumbnail.png)](https://youtu.be/your_video_id)
 
 ### Future Improvements
 
