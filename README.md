@@ -41,14 +41,14 @@ The pipeline compares multiple regression models:
 ## Screenshots
 
 ### Web Application UI
-![Web App Screenshot](assets/screen_shots/pic_01.png)
-![Web App Screenshot](assets/screen_shots/pic_02.png)
+![Web App Screenshot](assets/screen_shots/01.png)
+![Web App Screenshot](assets/screen_shots/02.png)
 
 ### Feature Importance
 ![Feature Importance](artifacts/plots/feature_importance.png)
 
 ### Price Prediction
-![Price Prediction](assets/screen_shots/pic_03.png)
+![Price Prediction](assets/screen_shots/03.png)
 
 ## Project Structure
 
